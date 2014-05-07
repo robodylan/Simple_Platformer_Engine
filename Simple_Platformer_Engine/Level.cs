@@ -11,7 +11,7 @@ namespace Simple_Platformer_Engine
         public static Bitmap levelImage;
         public static void Load(int levelID)
         {
-            Player.x = 64;
+            Player.x = 70;
             Player.y = 64;
             levelImage = new Bitmap("Content/Level0/blocks.bmp");
             for (int x = 0; x < levelImage.Width; x++)

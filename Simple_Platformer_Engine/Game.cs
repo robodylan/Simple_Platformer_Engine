@@ -22,10 +22,11 @@ namespace Simple_Platformer_Engine
             blockSprite = new Sprite(new Texture("Content/Block.png"),new IntRect(0,0,64,64));
             playerSprite = new Sprite(new Texture("Content/Player.png"), new IntRect(0, 0, 64, 64));
             window.Closed += onWindowClose;
+            window.KeyPressed += Player.Move;
             Level.Load(0);
             while(window.IsOpen())
             {
-                generateBlock();
+                window.Clear();
                 window.DispatchEvents();
                 Update();
                 window.Display();
@@ -41,11 +42,6 @@ namespace Simple_Platformer_Engine
             }
             playerSprite.Position = new Vector2f(Player.x,Player.y);
             window.Draw(playerSprite);
-        }
-        public static void generateBlock()
-        {
-            blocks.Add(new Block(0, 0));
-            blocks.Add(new Block(64,0));
         }
 
         public static void onWindowClose(Object sender, EventArgs e)
