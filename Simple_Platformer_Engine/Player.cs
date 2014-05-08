@@ -13,27 +13,25 @@ namespace Simple_Platformer_Engine
     {
         public static int x;
         public static int y;
-
+        public static int Speed = 3;
         public static void Move(Object sender, KeyEventArgs e)
         {
-                switch (e.Code)
-                {
-                    case Keyboard.Key.W: y--; if(!isColliding()){ y++; } break;
-                    case Keyboard.Key.S: if (!isColliding()) { y++; } else { /*y--;*/ } break;
-                    case Keyboard.Key.A: if (!isColliding()) { x--; } else { /*x++;*/ }break;
-                    case Keyboard.Key.D: if (!isColliding()) { x++; } else { /*x--;*/ }break;
-                }
+            switch (e.Code)
+            {
+                case Keyboard.Key.W: y = y - Speed; if (isColliding()) { y = y + Speed; } break;
+                case Keyboard.Key.S: y = y + Speed; if (isColliding()) { y = y - Speed; } break;
+                case Keyboard.Key.A: x = x - Speed; if (isColliding()) { x = x + Speed; } break;
+                case Keyboard.Key.D: x = x + Speed; if (isColliding()) { x = x - Speed; } break;
+            }
         }
         public static bool isColliding()
         {
-            bool f = false;
             foreach(Block c in Game.blocks){
-                if (x > c.X && x < (c.X + 64) || y > c.Y && y < (c.Y + 64))
+                if()
                 {
-                    f = true;
+
                 }
-            }
-            return f;
         }
+    }
     }
 }
