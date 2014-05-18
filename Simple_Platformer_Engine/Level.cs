@@ -11,20 +11,24 @@ namespace Simple_Platformer_Engine
         public static Bitmap levelImage;
         public static void Load(int levelID)
         {
-            Player.x = 70;
+            Player.x = 64;
             Player.y = 64;
-            levelImage = new Bitmap("Content/Level0/blocks.bmp");
+            levelImage = new Bitmap("Content/Level" + levelID.ToString() + "/blocks.bmp");
             for (int x = 0; x < levelImage.Width; x++)
             {
                 for (int y = 0; y < levelImage.Height; y++)
                 {
                     Color c = levelImage.GetPixel(x, y);
-                    if (c.B < 100)
+                    if (c.R == 0 && c.G == 0 && c.B == 0)
                     {
-                        Game.blocks.Add(new Block(x * 64, y * 64));
+                        Game.blocks.Add(new Block(x * 64, y * 64, 1));
                     }
                 }
             }
+        }
+        public static void DrawBackground()
+        {
+
         }
     }
 }
